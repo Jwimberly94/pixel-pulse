@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pixel Pulse</title>
+    <link rel="stylesheet" href="/CSS/retro.css">
+</head>
+<body>
+    <img src="Images/Pixel_Pulse_Banner.png" alt="Pixel Pulse Banner" class="banner">
+    
+    <h1>Welcome to Pixel Pulse!</h1>
+    
+    <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="BitsandBytes.html">Bits and Bytes</a>
+        <a href="FlashBacks.html">FlashBacks</a>
+        <a href="https://github.com/Jwimberly94">My Github</a>
+        <span id="account-links">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        </span>
+    </div>
+    
+    <p>Welcome to Pixel Pulse! This is a social website dedicated to helping people re-live old memories and connect with others who share similar interests.</p>
+
+    <p>Here you can explore various topics, share your experiences, and engage with a community that values nostalgia and connection. Share and write reviews of your favorite retro games, post pictures, and tell us about your gaming milestones!</p>
+
+    <p>Whether it's the first time you beat Donkey Kong or when you discovered Zelda was the princess's name - we want to hear your stories. Join us in celebrating the joy of reminiscing and connecting with like-minded individuals!</p>
+    
+
+    <div class="console-pics">
+        <img src="Images/nes.png" alt="Nintendo">
+        <img src="Images/n64.jpg" alt="Nintendo 64">
+        <img src="Images/ps1.jpg" alt="PlayStation">
+    </div>
+    
+    <div class="feedback" id="feedback">
+        <h2>Tell me what you think!</h2>
+        <p id="feedback-status" role="status" aria-live="polite"></p>
+        <form id="feedback-form" method="post" action="/feedback">
+            <input type="hidden" name="csrf_token">
+            <p>Your Name: <input type="text" name="name" required maxlength="200"></p>
+            <p>Your Email: <input type="email" name="email" required maxlength="320"></p>
+            <p>What would you like to see on my website?<br>
+                <textarea name="suggestions" rows="4" cols="30" required maxlength="5000"></textarea>
+            </p>
+            <button type="submit">Send Feedback</button>
+        </form>
+    </div>
+    
+    <div class="video-section">
+        <h2>D&amp;D Fans</h2>
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/s4Td1B8Ne3k?autoplay=1&mute=1&origin=http://localhost:8000" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <p>Who thinks the new D&amp;D game looks sick.</p>
+    </div>
+    
+    <p>Copyrights &copy;2025&nbsp;&nbsp;&nbsp; 
+    <a href="mailto:Wimberlj3704@student.faytechcc.edu">Contact Us!</a>
+    </p>
+    
+    <script>
+        fetch('/api/session')
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('#feedback-form [name="csrf_token"]').value = data.csrf_token;
+                const accountLinks = document.getElementById('account-links');
+                if (data.logged_in) {
+                    accountLinks.innerHTML = `Welcome, ${data.username} |
+                        <form method="post" action="/logout">
+                            <input type="hidden" name="csrf_token" value="${data.csrf_token}">
+                            <button type="submit">Logout</button>
+                        </form>`;
+                }
+            })
+            .catch(() => {});
+
+        const feedbackMessages = {
+            sent: 'Thanks! Your feedback was emailed successfully.',
+            invalid: 'Please enter a valid email address and complete all feedback fields.',
+            setup: 'Feedback email is not configured yet. Please try again later.',
+            failed: 'Your feedback could not be emailed right now. Please try again later.',
+            session_error: 'Your form session expired. Reload the page and try again.'
+        };
+        const feedbackResult = new URLSearchParams(window.location.search).get('feedback');
+        if (feedbackMessages[feedbackResult]) {
+            document.getElementById('feedback-status').textContent = feedbackMessages[feedbackResult];
+        }
+    </script>
+    
+</body>
+</html>

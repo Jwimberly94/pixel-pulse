@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Pixel Pulse</title>
+    <link rel="stylesheet" href="/CSS/auth.css">
+</head>
+<body>
+    <main class="auth-box">
+        <h1>Create Account</h1>
+        {% if error %}<p class="error">{{ error }}</p>{% endif %}
+        <form method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <label for="username">Username</label>
+            <input id="username" name="username" minlength="3" autocomplete="username" required>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" minlength="8" autocomplete="new-password" required>
+            <button type="submit">Register</button>
+        </form>
+        <div class="links"><a href="/login">Already have an account?</a> | <a href="/index.html">Back to Pixel Pulse</a></div>
+    </main>
+</body>
+</html>

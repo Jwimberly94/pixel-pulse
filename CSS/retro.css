@@ -1,0 +1,208 @@
+:root {
+    --black: #09082a;
+    --navy: #17154a;
+    --purple: #4b1f78;
+    --pink: #ff4fa3;
+    --cyan: #2de2e6;
+    --yellow: #f9ed69;
+    --red: #ff3864;
+    --green: #37ff8b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 25px;
+    color: white;
+    font-family: "Courier New", monospace;
+    background:
+        linear-gradient(rgba(45, 226, 230, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45, 226, 230, 0.07) 1px, transparent 1px),
+        radial-gradient(circle at top, var(--purple), var(--black) 70%);
+    background-size: 24px 24px, 24px 24px, auto;
+}
+
+h1 {
+    color: var(--yellow);
+    font-size: 48px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 0 var(--pink);
+}
+
+h2 {
+    color: var(--cyan);
+    font-size: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+p {
+    color: #bfefff;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.menu, .nav {
+    margin: 20px 0;
+    padding: 15px;
+    background: var(--navy);
+    border: 3px solid var(--cyan);
+    box-shadow: 7px 7px 0 var(--pink);
+    text-align: center;
+}
+
+.menu a, .nav a {
+    display: inline-block;
+    margin: 5px 10px;
+    color: var(--yellow);
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu a:hover, .nav a:hover,
+.menu a:focus-visible, .nav a:focus-visible {
+    color: var(--pink);
+    text-decoration: underline;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    border: 4px solid var(--pink);
+    box-shadow: 5px 5px 0 var(--cyan);
+}
+
+.banner {
+    width: 100%;
+    height: 350px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto 20px;
+    border: 4px solid var(--cyan);
+    box-shadow: 9px 9px 0 var(--pink);
+}
+
+.console-pics { margin: 30px 0; text-align: center; }
+
+.feedback, .form-box, form {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(23, 21, 74, 0.95);
+    border: 3px solid var(--yellow);
+    box-shadow: 7px 7px 0 var(--purple);
+}
+
+.feedback form, form { padding: 15px; }
+
+input, textarea, select {
+    width: min(300px, 90%);
+    margin: 6px;
+    padding: 9px;
+    color: white;
+    background: var(--black);
+    border: 3px solid var(--purple);
+    font: 16px "Courier New", monospace;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--yellow);
+    outline: 3px solid var(--pink);
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    color: var(--black);
+    background: var(--pink);
+    border: 3px solid var(--yellow);
+    box-shadow: 5px 5px 0 var(--cyan);
+    font: 900 16px "Courier New", monospace;
+    cursor: pointer;
+}
+
+button:hover, button:focus-visible {
+    background: var(--yellow);
+    border-color: var(--pink);
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--cyan);
+}
+
+.video-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: var(--navy);
+    border: 4px solid var(--pink);
+    box-shadow: 9px 9px 0 var(--cyan);
+    text-align: center;
+}
+
+iframe {
+    max-width: 100%;
+    border: 5px solid var(--cyan);
+}
+
+table {
+    width: 100%;
+    margin: 20px 0;
+    border: 3px solid var(--cyan);
+    border-collapse: collapse;
+}
+
+th {
+    padding: 10px;
+    color: var(--black);
+    background: var(--yellow);
+    border: 2px solid var(--pink);
+}
+
+td {
+    padding: 8px;
+    background: var(--navy);
+    border: 2px solid var(--purple);
+    text-align: center;
+}
+
+#account-links { display: inline; color: var(--cyan); }
+#account-links form { display: inline; margin: 0; padding: 0; border: 0; box-shadow: none; background: none; }
+#account-links button { padding: 4px 8px; }
+
+p a, footer a, a[href^="mailto"] { color: var(--cyan); }
+
+.review-card {
+    margin: 18px 0;
+    padding: 16px;
+    background: var(--navy);
+    border: 3px solid var(--cyan);
+    box-shadow: 6px 6px 0 var(--pink);
+}
+
+.review-card h3 { color: var(--yellow); }
+.review-card p { text-align: left; }
+.review-by { color: var(--cyan); }
+.review-success { color: var(--green); font-weight: bold; }
+.review-error, .no-reviews { color: var(--yellow); }
+
+.memory-card {
+    margin: 18px 0;
+    padding: 16px;
+    background: var(--navy);
+    border: 3px solid var(--pink);
+    box-shadow: 6px 6px 0 var(--cyan);
+}
+
+.memory-card h3 { color: var(--yellow); }
+.memory-card p { text-align: left; }
+.memory-by, .no-memories { color: var(--cyan); }
+
+@media (max-width: 700px) {
+    body { margin: 12px; }
+    h1 { font-size: 32px; }
+    .banner { height: 220px; }
+    table { display: block; overflow-x: auto; }
+}
